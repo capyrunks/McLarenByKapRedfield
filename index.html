@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>McLaren 720S Spider - Интерактивный обзор</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .car-section {
+            transition: all 0.3s ease;
+        }
+        .car-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .hotspot {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background-color: rgba(255, 0, 0, 0.6);
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        .hotspot:hover {
+            transform: scale(1.2);
+            background-color: rgba(255, 0, 0, 0.9);
+        }
+        .detail-panel {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out;
+        }
+        .detail-panel.active {
+            max-height: 500px;
+        }
+        .car-image-container {
+            position: relative;
+        }
+        @media (max-width: 768px) {
+            .hotspot {
+                width: 20px;
+                height: 20px;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans">
+    <!-- Header -->
+    <header class="bg-black text-white py-6">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h1 class="text-3xl font-bold">McLaren <span class="text-red-600">720S Spider</span></h1>
+                    <p class="text-gray-400">Интерактивный обзор</p>
+                </div>
+                <div class="flex space-x-4">
+                    <a href="#" class="hover:text-red-400"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="hover:text-red-400"><i class="fab fa-telegram"></i></a>
+                    <a href="#" class="hover:text-red-400"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Hero Section -->
+        <section class="mb-16">
+            <div class="bg-gradient-to-r from-gray-900 to-gray-700 rounded-2xl p-8 text-white">
+                <div class="flex flex-col md:flex-row items-center">
+                    <div class="md:w-1/2 mb-8 md:mb-0">
+                        <h2 class="text-4xl font-bold mb-4">McLaren 720S Spider</h2>
+                        <p class="text-lg mb-6">Роскошный суперкар с откидным верхом, сочетающий в себе непревзойдённую динамику и элегантный дизайн.</p>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-black bg-opacity-40 p-4 rounded-lg">
+                                <p class="text-gray-400">Мощность</p>
+                                <p class="text-2xl font-bold">720 <span class="text-sm">л.с.</span></p>
+                            </div>
+                            <div class="bg-black bg-opacity-40 p-4 rounded-lg">
+                                <p class="text-gray-400">Разгон 0-100</p>
+                                <p class="text-2xl font-bold">2.9 <span class="text-sm">сек</span></p>
+                            </div>
+                            <div class="bg-black bg-opacity-40 p-4 rounded-lg">
+                                <p class="text-gray-400">Макс. скорость</p>
+                                <p class="text-2xl font-bold">341 <span class="text-sm">км/ч</span></p>
+                            </div>
+                            <div class="bg-black bg-opacity-40 p-4 rounded-lg">
+                                <p class="text-gray-400">Вес</p>
+                                <p class="text-2xl font-bold">1,332 <span class="text-sm">кг</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2">
+                        <img src="https://www.mclaren.com/content/mclaren-720s-spider/mclaren-720s-spider-mso-01.jpg" alt="McLaren 720S Spider" class="w-full rounded-lg shadow-2xl transform hover:scale-105 transition duration-500">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Car Section -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 text-center">Исследуйте McLaren 720S Spider</h2>
+            
+            <div class="flex flex-col lg:flex-row gap-8">
+                <!-- Car Image with Hotspots -->
+                <div class="lg:w-2/3 car-image-container">
+                    <img src="https://www.mclaren.com/content/mclaren-720s-spider/mclaren-720s-spider-01.jpg" alt="McLaren 720S Spider" class="w-full rounded-xl shadow-lg" id="main-car-image">
+                    
+                    <!-- Hotspots -->
+                    <div class="hotspot" style="top: 30%; left: 15%;" onclick="showDetail('doors')">
+                        <span>1</span>
+                    </div>
+                    <div class="hotspot" style="top: 20%; left: 50%;" onclick="showDetail('roof')">
+                        <span>2</span>
+                    </div>
+                    <div class="hotspot" style="top: 50%; left: 80%;" onclick="showDetail('engine')">
+                        <span>3</span>
+                    </div>
+                    <div class="hotspot" style="top: 70%; left: 30%;" onclick="showDetail('interior')">
+                        <span>4</span>
+                    </div>
+                    <div class="hotspot" style="top: 40%; left: 70%;" onclick="showDetail('aerodynamics')">
+                        <span>5</span>
+                    </div>
+                </div>
+                
+                <!-- Details Panel -->
+                <div class="lg:w-1/3 bg-white p-6 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold mb-4">Выберите элемент для изучения</h3>
+                    <p class="text-gray-600 mb-6">Нажмите на маркеры на изображении или выберите из списка ниже</p>
+                    
+                    <div class="space-y-4">
+                        <div class="car-section p-4 border border-gray-200 rounded-lg cursor-pointer" onclick="showDetail('doors')">
+                            <div class="flex justify-between items-center">
+                                <h4 class="font-bold">Двери "бабочка"</h4>
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="car-section p-4 border border-gray-200 rounded-lg cursor-pointer" onclick="showDetail('roof')">
+                            <div class="flex justify-between items-center">
+                                <h4 class="font-bold">Складная крыша</h4>
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="car-section p-4 border border-gray-200 rounded-lg cursor-pointer" onclick="showDetail('engine')">
+                            <div class="flex justify-between items-center">
+                                <h4 class="font-bold">Двигатель V8</h4>
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="car-section p-4 border border-gray-200 rounded-lg cursor-pointer" onclick="showDetail('interior')">
+                            <div class="flex justify-between items-center">
+                                <h4 class="font-bold">Роскошный салон</h4>
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="car-section p-4 border border-gray-200 rounded-lg cursor-pointer" onclick="showDetail('aerodynamics')">
+                            <div class="flex justify-between items-center">
+                                <h4 class="font-bold">Аэродинамика</h4>
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Detail Panels -->
+            <div class="mt-8 space-y-6">
+                <!-- Doors Detail -->
+                <div id="doors-detail" class="detail-panel bg-white p-6 rounded-xl shadow-lg">
+                    <div class="flex flex-col md:flex-row gap-8">
+                        <div class="md:w-1/2">
+                            <img src="https://www.mclaren.com/content/mclaren-720s-spider/mclaren-720s-spider-02.jpg" alt="McLaren 720S Spider Doors" class="w-full rounded-lg">
+                        </div>
+                        <div class="md:w-1/2">
+                            <h3 class="text-2xl font-bold mb-4">Двери "бабочка"</h3>
+                            <p class="text-gray-700 mb-4">Двери McLaren 720S Spider открываются вверх и слегка наружу, обеспечивая легкий доступ в салон и создавая драматический визуальный эффект.</p>
+                            <ul class="space-y-2 mb-6">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-red-600 mt-1 mr-2"></i>
+                                    <span>Гидравлическая система открывания</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-red-600 mt-1 mr-2"></i>
+                                    <span>Датчики препятствий для безопасности</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-red-600 mt-1 mr-2"></i>
+                                    <span>Эргономичный дизайн для удобства входа/выхода</span>
+                                </li>
+                            </ul>
+                            <button onclick="hideDetails()" class="bg-black text-white px-6 py-2 rounded-lg hover:bg-red-600 transition">Закрыть</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Roof Detail -->
+                <div id="roof-detail" class="detail-panel bg-white p-6 rounded-xl shadow-lg">
+                    <div class="flex flex-col md:flex-row gap-8">
+                        <div class="md:w-1/2">
+                            <img src="https://www.mclaren.com/content/mclaren-720s-spider/mclaren-720s-spider-03.jpg" alt="McLaren 720S Spider Roof" class="w-full rounded-lg">
+                        </div>
+                        <div class="md:w-1/2">
+                            <h3 class="text-2xl font-bold mb-4">Складная крыша</h3>
+                            <p class="text-gray-700 mb-4">Электрогидравлическая складная жесткая крыша (RHT) 720S Spider складывается всего за 11 секунд и может работать на скоростях до 50 км/ч.</p>
+                            <ul class="space-y-2 mb-6">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-red-600 mt-1 mr-2"></i>
+                                    <span>Складывается всего за 11 секунд</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-red-600 mt-1 mr-2"></i>
+                                    <span>Работает на скорости до 50 км/ч</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-red-600 mt-1 mr-2"></i>
+                                    <span>Минимальное влияние на жесткость кузова</span>
+                                </li>
+                            </ul>
+                            <button onclick="hideDetails()" class="bg-black text-white px-6 py-2 rounded-lg hover:bg-red-600 transition">Закрыть</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Engine Detail -->
+                <div id="engine-detail" class="detail-panel bg-white p-6 rounded-xl shadow-lg">
+                    <div class="flex flex-col md:flex-row gap-8">
+                        <div class="md:w-1/2">
+                            <img src="https://www.mclaren.com/content/mclaren-720s-spider/mclaren-720s-spider-04.jpg" alt="McLaren 720S Spider Engine" class="w-full rounded-lg">
+                        </div>
+                        <div class="md:w-1/2">
+                            <h3 class="text-2xl font-bold mb-4">Двигатель V8</h3>
+                            <p class="text-gray-700 mb-4">4.0-литровый двигатель M840T с двойным турбонаддувом развивает 720 л.с. при 7500 об/мин и 770 Нм крутящего момента при 5500 об/мин.</p>
+                            <ul class="space-y-2 mb-6">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-red-600 mt-1 mr-2"></i>
+                                    <span>4.0-литровый V8 с двойным турбонаддувом</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-red-600 mt-1 mr-2"></i>
+                                    <span>720 л.с. и 770 Нм крутящего момента</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-red-600 mt-1 mr-2"></i>
+                                    <span>0-100 км/ч за 2.9 секунды</span>
+                                </li>
+                            </ul>
+                            <button onclick="hideDetails()" class="bg-black text-white px-6 py-2 rounded-lg hover:bg-red-600 transition">Закрыть</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Interior Detail -->
+                <div id="interior-detail" class="detail-panel bg-white p-6 rounded-xl shadow-lg">
+                    <div class="flex flex-col md:flex-row gap-8">
+                        <div class="md:w-1/2">
+                            <img src="https://www.mclaren.com/content/mclaren-720s-spider/mclaren-720s-spider-05.jpg" alt="McLaren 720S Spider Interior" class="w-full rounded-lg">
+                        </div>
+                        <div class="md:w-1/2">
+                            <h3 class="text-2xl font-bold mb-4">Роскошный салон</h3>
+                            <p class="text-gray-700 mb-4">Салон 720S Spider сочетает в себе высокотехнологичные материалы, эргономику гоночного автомобиля и роскошь премиального спорткара.</p>
+                            <ul class="space-y-2 mb-6">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-red-600 mt-1 mr-2"></i>
+                                    <span>Кожа Nappa премиум-класса</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-red-600 mt-1 mr-2"></i>
+                                    <span>Цифровая приборная панель с режимом гоночной информации</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-red-600 mt-1 mr-2"></i>
+                                    <span>Эргономичные спортивные сиденья с памятью настроек</span>
+                                </li>
+                            </ul>
+                            <button onclick="hideDetails()" class="bg-black text-white px-6 py-2 rounded-lg hover:bg-red-600 transition">Закрыть</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Aerodynamics Detail -->
+                <div id="aerodynamics-detail" class="detail-panel bg-white p-6 rounded-xl shadow-lg">
+                    <div class="flex flex-col md:flex-row gap-8">
+                        <div class="md:w-1/2">
+                            <img src="https://www.mclaren.com/content/mclaren-720s-spider/mclaren-720s-spider-06.jpg" alt="McLaren 720S Spider Aerodynamics" class="w-full rounded-lg">
+                        </div>
+                        <div class="md:w-1/2">
+                            <h3 class="text-2xl font-bold mb-4">Аэродинамика</h3>
+                            <p class="text-gray-700 mb-4">Дизайн 720S Spider оптимизирован для максимальной аэродинамической эффективности, с активным спойлером и воздуховодами, направляющими воздух для охлаждения и прижимной силы.</p>
+                            <ul class="space-y-2 mb-6">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-red-600 mt-1 mr-2"></i>
+                                    <span>Активный задний спойлер</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-red-600 mt-1 mr-2"></i>
+                                    <span>Диффузор с двойными каналами</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-red-600 mt-1 mr-2"></i>
+                                    <span>Воздуховоды для охлаждения тормозов и двигателя</span>
+                                </li>
+                            </ul>
+                            <button onclick="hideDetails()" class="bg-black text-white px-6 py-2 rounded-lg hover:bg-red-600 transition">Закрыть</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Gallery Section -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 text-center">Галерея McLaren 720S Spider</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition">
+                    <img src="https://www.mclaren.com/content/mclaren-720s-spider/mclaren-720s-spider-07.jpg" alt="McLaren 720S Spider" class="w-full h-64 object-cover hover:scale-105 transition duration-500">
+                </div>
+                <div class="overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition">
+                    <img src="https://www.mclaren.com/content/mclaren-720s-spider/mclaren-720s-spider-08.jpg" alt="McLaren 720S Spider" class="w-full h-64 object-cover hover:scale-105 transition duration-500">
+                </div>
+                <div class="overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition">
+                    <img src="https://www.mclaren.com/content/mclaren-720s-spider/mclaren-720s-spider-09.jpg" alt="McLaren 720S Spider" class="w-full h-64 object-cover hover:scale-105 transition duration-500">
+                </div>
+                <div class="overflow-hidden rounde
